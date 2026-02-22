@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,800&display=swap');
+@import "tailwindcss";
+
+/* ── Tailwind v4 dark mode via class strategy ── */
+@custom-variant dark (&.dark);
+
+/* ── Design tokens via @theme ── */
+@theme {
+  /* Teal — interactive: links, hover, nav active */
+  --color-accent: #4FA095;
+  --color-accent-soft: #a3d5ce;
+  --color-accent-strong: #3d8a80;
+
+  /* Dusty Blue — headings, underlines, subtle borders */
+  --color-accent-blue: #5B7C93;
+  --color-accent-blue-soft: #8faabb;
+
+  /* Soft Coral — CTAs, badges, highlights */
+  --color-accent-coral: #D97C7C;
+  --color-accent-coral-soft: #e8a5a5;
+  --color-accent-coral-muted: #c46b6b;
+
+  --font-heading: 'Satoshi', 'General Sans', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --animate-glow-line: glow-line 3s ease-in-out infinite;
+  --animate-float-gentle: float-gentle 4s ease-in-out infinite;
+}
+
+/* ── Light theme (default) ── */
+:root {
+  --bg-primary: #F5F3EE;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #EDE9E1;
+  --bg-card: #FFFFFF;
+  --bg-body: #EFECE6;
+
+  --text-primary: #2F3A45;
+  --text-secondary: #6B7280;
+  --text-tertiary: #9CA3AF;
+
+  --border-primary: #D9D4C7;
+  --border-secondary: #C9C3B6;
+
+  --surface-hover: #EDE9E1;
+
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Dark theme — warm moody ── */
+.dark {
+  --bg-primary: #1F2A30;
+  --bg-secondary: #26343C;
+  --bg-tertiary: #2E3E47;
+  --bg-card: #26343C;
+  --bg-body: #1A252B;
+
+  --text-primary: #E6E3DD;
+  --text-secondary: #A3B1B8;
+  --text-tertiary: #728690;
+
+  --border-primary: #3A4D56;
+  --border-secondary: #4A5F6A;
+
+  --surface-hover: #2E3E47;
+}
+
+/* ── Base resets ── */
+body {
+  margin: 0;
+  min-height: 100svh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Satoshi', 'General Sans', system-ui, sans-serif;
+}
+
+/* ── Keyframes ── */
+@keyframes glow-line {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* ── Scroll-triggered fade-in ── */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Pixel grid overlay (game section) ── */
+.pixel-grid-overlay {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+/* ── Film grain overlay ── */
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
