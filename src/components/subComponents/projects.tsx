@@ -1,4 +1,8 @@
 import { useState } from 'react'
+import goBoardVideo from '../../assets/go-board.mp4'
+import sugarCosmeticsVideo from '../../assets/sugar-cosmetics.mp4'
+import eleven11Video from '../../assets/grok-video-f050df5b-dafb-4b03-9e54-1672f83fd92a.mp4'
+import grocerVideo from '../../assets/grocer.mp4'
 
 type Project = {
   name: string
@@ -18,7 +22,7 @@ export const Projects = () => {
   const projectsArr: Project[] = [
     {
       name: 'Go Boarding',
-      image: '../../assets/go-board.mp4',
+      image: goBoardVideo,
       description: 'Dual-portal bus reservation system with operator controls and a smooth customer booking experience.',
       liveStatus: true,
       link: 'https://go-boarding-bus-app-yfk7.vercel.app/',
@@ -27,7 +31,7 @@ export const Projects = () => {
     },
     {
       name: 'Sugar Cosmetics - Replics',
-      image: '../../assets/sugar-cosmetics.mp4',
+      image: sugarCosmeticsVideo,
       description: 'Developed a React-based replica of the SUGAR Cosmetics landing page with dynamic product rendering, state-driven cart management, and add-to-cart functionality.',
       liveStatus: false,
       link: 'https://sugar-cosmetics-replica-8w5sh1xx6-rithikaram29s-projects.vercel.app/',
@@ -35,14 +39,14 @@ export const Projects = () => {
     },
     {
       name: 'Eleven11 App',
-      image: '../../assets/grok-video-f050df5b-dafb-4b03-9e54-1672f83fd92a.mp4',
+      image: eleven11Video,
       description: 'Short description',
       liveStatus: true,
       link: 'https://play.google.com/store/apps/details?id=com.eleven11studios.eleven11',
     },
     {
       name: 'Grocery Detection',
-      image: '../../assets/grocer.mp4',
+      image: grocerVideo,
       description: 'Built an MVP that detects groceries, learns from user-drawn corrections, and stores everything for retraining — YOLOv8 + Supabase + a little AI chaos',
       liveStatus: true,
       githubLink:"https://github.com/Rithikaram29/indian-grocery-detection",
@@ -56,9 +60,7 @@ export const Projects = () => {
         {projectsArr.map((p, index) => {
           const hasLive = Boolean(p.link && p.link.trim().length > 0)
           const hasGithub = Boolean(p.githubLink && p.githubLink.trim().length > 0)
-          const mediaSrc = p.image.startsWith('http')
-            ? p.image
-            : new URL(p.image, import.meta.url).href
+          const mediaSrc = p.image
           const isActive = activeCard === index
 
           return (
