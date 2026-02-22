@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import goBoardVideo from '../../assets/go-board.mp4'
-import sugarCosmeticsVideo from '../../assets/sugar-cosmetics.mp4'
-import eleven11Video from '../../assets/grok-video-f050df5b-dafb-4b03-9e54-1672f83fd92a.mp4'
-import grocerVideo from '../../assets/grocer.mp4'
+const goBoardVideo = new URL('../../assets/go-board.mp4', import.meta.url).href
+const sugarCosmeticsVideo = new URL('../../assets/sugar-cosmetics.mp4', import.meta.url).href
+const eleven11Video = new URL('../../assets/grok-video-f050df5b-dafb-4b03-9e54-1672f83fd92a.mp4', import.meta.url).href
+const grocerVideo = new URL('../../assets/grocer.mp4', import.meta.url).href
 
 type Project = {
   name: string
@@ -78,7 +78,14 @@ export const Projects = () => {
                   playsInline
                   preload="metadata"
                   onError={(e) => {
-                    console.error('Video failed to load:', mediaSrc, e)
+                    const el = e.currentTarget
+                    console.error('Video failed to load:', {
+                      src: mediaSrc,
+                      currentSrc: el.currentSrc,
+                      networkState: el.networkState,
+                      readyState: el.readyState,
+                      error: el.error,
+                    })
                   }}
                   onMouseEnter={(e) => e.currentTarget.pause()}
                   onMouseLeave={(e) => e.currentTarget.play()}
