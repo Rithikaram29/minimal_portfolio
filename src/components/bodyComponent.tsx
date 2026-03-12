@@ -5,6 +5,7 @@ import { Projects } from "./subComponents/projects"
 import { Skills } from "./subComponents/skills"
 import { SmallGame } from "./subComponents/smallGame"
 import { Contact } from "./subComponents/contact"
+import { Contributions } from "./subComponents/contributions"
 
 export const BodyComponent = () => {
   const mainRef = useRef<HTMLElement>(null)
@@ -93,6 +94,14 @@ export const BodyComponent = () => {
               <div className="mt-2 h-0.5 w-12 bg-accent-blue rounded-full" />
               <div className="mt-6">
                 <Projects />
+              </div>
+            </div>
+
+            <div id="contributions" className="fade-in-section">
+              <h2 className="text-xl font-semibold tracking-tight uppercase text-(--text-primary) font-heading">Contributions</h2>
+              <div className="mt-2 h-0.5 w-12 bg-accent-blue rounded-full" />
+              <div className="mt-6">
+                <Contributions />
               </div>
             </div>
 
