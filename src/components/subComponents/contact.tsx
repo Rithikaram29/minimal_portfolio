@@ -47,29 +47,29 @@ export const Contact = () => {
 
   return (
     <section className="w-full">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {contactMethods.map((method) => (
           <a
             key={method.label}
             href={method.href}
             target={method.href.startsWith("http") ? "_blank" : undefined}
             rel={method.href.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="group flex items-center gap-3 sm:gap-4 rounded-xl border border-(--border-primary) bg-(--bg-card) p-3 sm:p-5 hover:border-accent/40 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+            className="group flex items-center gap-3 rounded-[18px] border border-(--border-primary) bg-(--bg-secondary) p-4 shadow-[var(--shadow-card)] transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 sm:gap-4 sm:p-5"
           >
-            <div className="w-10 h-10 rounded-lg bg-(--bg-tertiary) flex items-center justify-center text-(--text-tertiary) group-hover:text-accent group-hover:bg-accent/10 transition-colors">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-(--bg-tertiary) text-(--text-tertiary) transition-colors group-hover:bg-accent/10 group-hover:text-accent">
               {method.icon}
             </div>
             <div className="min-w-0">
-              <p className="text-xs font-semibold uppercase tracking-wide text-(--text-tertiary)">{method.label}</p>
-              <p className="text-sm font-medium text-(--text-primary) truncate">{method.value}</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--text-tertiary)">{method.label}</p>
+              <p className="mt-1 truncate text-sm font-medium text-(--text-primary)">{method.value}</p>
             </div>
           </a>
         ))}
       </div>
 
-      <div className="mt-8 pt-6 border-t border-(--border-primary) text-center">
+      <div className="mt-8 border-t border-(--border-primary) pt-6 text-center">
         <p className="text-sm text-(--text-tertiary)">
-          Open to opportunities, collaborations, and interesting conversations.
+          Available for product engineering roles, collaborative builds, and consulting conversations.
         </p>
       </div>
     </section>

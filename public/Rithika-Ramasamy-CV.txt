@@ -1,0 +1,37 @@
+Rithika Ramasamy
+Software Engineer
+Bengaluru, India | Remote
+Email: rithikaram293@gmail.com
+GitHub: https://github.com/Rithikaram29
+LinkedIn: https://www.linkedin.com/in/rithika-r-0b0526213/
+
+Summary
+Backend-leaning software engineer focused on scalable services, payment systems, full-stack product development, and applied AI.
+
+Experience
+Neokred | SDE1 | 2025 - Present
+- Developing and scaling backend systems for payment infrastructure and microservices-driven financial workflows.
+- Built backend components for merchant onboarding and settlement services.
+- Improved observability across services with structured logging and monitoring.
+
+Skills
+- Node.js
+- TypeScript
+- React
+- PostgreSQL
+- MongoDB
+- Redis
+- Kafka
+- GraphQL
+- Python
+- Supabase
+- System Design
+
+Projects
+- Go Boarding
+- Sugar Cosmetics Replica
+- Indian Grocery Detection
+- Eleven11 App
+
+Note
+Replace this file with your latest CV PDF when ready.

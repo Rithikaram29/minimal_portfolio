@@ -1,64 +1,93 @@
-import { useMemo, useState } from "react"
+import dp from "../../assets/dp.jpg"
 
-const DEFAULT_ABOUT =
-`I'm a software engineer who genuinely loves learning and experimenting with technology. I thrive on trying new tools, breaking things, rebuilding them better, and figuring out how systems really work. My core stack is MERN, but I also work with Python — especially as I dive deeper into AI and machine learning. I enjoy "vibe coding" — rapid prototyping, testing ideas fast, and iterating quickly — while still respecting solid engineering principles. Currently, I work on payments and microservices, where precision, scalability, and reliability aren't optional. I'm drawn to challenges that push me beyond comfort, because that's where real growth happens.`
-
-const FULL_ABOUT =
-  `I'm a software engineer who genuinely loves learning and experimenting with technology 🚀. I thrive on trying new tools, breaking things, rebuilding them better, and figuring out how systems really work. My core stack is MERN, but I also work with Python 🐍 — especially as I dive deeper into AI and machine learning 🤖. I enjoy "vibe coding" — rapid prototyping, testing ideas fast, and iterating quickly — while still respecting solid engineering principles. Currently, I work on payments and microservices 💳⚙️, where precision, scalability, and reliability aren't optional. I'm drawn to challenges that push me beyond comfort, because that's where real growth happens.
-
-Before tech, I trained as an architect 🏗️ — which means I learned to think in systems long before I wrote code. That background shapes how I approach engineering. I naturally think about structure, flow, scalability, and long-term evolution. Whether it's designing a database schema, defining access control layers, or structuring a backend service, I focus on clarity and sustainability — not just quick fixes.
-
-I enjoy building end-to-end systems 🔄. From authentication flows and role-based access management to payment integrations and deployment pipelines, I like seeing how everything connects. I don't just want a feature to work — I want it to be predictable, extensible, and maintainable. Clean logic, thoughtful architecture, and real-world usability matter to me.
-
-Currently, I'm strengthening my foundations in data structures 📊, system design 🧠, and AI deployment 🚀. My focus is moving beyond just writing code to understanding how scalable systems are built and operated. I'm especially interested in intelligent products — applications that learn, adapt, and automate in meaningful ways 🤝.
-
-Long term, I'm working toward becoming a high-impact engineer who can build at scale while staying adaptable and forward-thinking. I value depth over hype, execution over noise, and continuous growth over comfort 📈. Every project is part of a larger journey — toward building systems that are not only functional, but powerful and future-ready ✨.`
+const scrollTo = (id: string) => {
+  const el = document.getElementById(id)
+  el?.scrollIntoView({ behavior: "smooth", block: "start" })
+}
 
 export const HeroAbout = () => {
-  const [isExpanded, setIsExpanded] = useState(false)
-
-  const paragraphs = useMemo(() => FULL_ABOUT.split("\n\n").filter(Boolean), [])
-  const firstPara = paragraphs[0] ?? DEFAULT_ABOUT
-
   return (
-    <section className="space-y-4">
-      <div
-        id="about-expand"
-        className={[
-          "overflow-hidden transition-[max-height] duration-300 ease-in-out",
-          isExpanded ? "max-h-[600px]" : "max-h-[160px]",
-        ].join(" ")}
-        aria-expanded={isExpanded}
-      >
-        <p className="text-base leading-relaxed text-(--text-primary)">
-          {firstPara}
-        </p>
-
-        <div
-          className={[
-            "text-base mt-4 space-y-4 text-(--text-primary)",
-            isExpanded ? "opacity-100" : "opacity-0",
-            "transition-opacity duration-200",
-          ].join(" ")}
-        >
-          {paragraphs.slice(1).map((para, idx) => (
-            <p key={idx} className=" leading-relaxed">
-              {para}
-            </p>
-          ))}
+    <section className="grid gap-8 lg:grid-cols-[0.9fr_0.8fr_1.3fr] lg:items-center">
+      <div className="order-2 space-y-3 lg:order-1">
+        <div className="rounded-2xl bg-(--bg-secondary) px-4 py-4">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--text-tertiary)">Open to </p>
+          <div className="mt-3 space-y-1">
+            <p className="text-2xl font-bold leading-tight tracking-tight text-(--text-primary) font-heading">Full-stack Developer</p>
+            <p className="text-2xl font-bold leading-tight tracking-tight text-(--text-primary) font-heading">AI Roles</p>
+          </div>
+        </div>
+        <div className="rounded-2xl bg-(--bg-secondary) px-4 py-4">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--text-tertiary)">Focus</p>
+          <p className="mt-2 text-sm font-medium leading-6 text-(--text-primary)">Full stack, microservices, applied AI</p>
+        </div>
+        <div className="rounded-2xl bg-(--bg-secondary) px-4 py-4">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--text-tertiary)">Location</p>
+          <p className="mt-2 text-sm font-medium leading-6 text-(--text-primary)">Bengaluru · Remote</p>
+        </div>
+        <div className="rounded-2xl bg-(--bg-secondary) px-4 py-4">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-(--text-tertiary)">Current Role</p>
+          <p className="mt-2 text-sm font-medium leading-6 text-(--text-primary)">SDE1, Software Engineer at Neokred</p>
         </div>
       </div>
 
-      <button
-        type="button"
-        onClick={() => setIsExpanded((v) => !v)}
-        className="inline-flex items-center gap-2 rounded-lg border border-(--border-primary) bg-(--bg-card) px-3 py-2 text-xs text-(--text-secondary) hover:bg-(--surface-hover) hover:text-accent transition cursor-pointer"
-        aria-controls="about-expand"
-        aria-label={isExpanded ? "Collapse about section" : "Expand about section"}
-      >
-        {isExpanded ? "Read less" : "Read more"}
-        <span className="text-(--text-tertiary)">{isExpanded ? "▲" : "▼"}</span>
-      </button>
+      <div className="order-1 relative mx-auto w-full max-w-sm lg:order-2">
+        <div className="absolute -inset-4 rounded-[32px] bg-linear-to-br from-accent/12 via-transparent to-accent-blue/10 blur-2xl" />
+        <div className="relative overflow-hidden rounded-[28px] bg-(--bg-card) p-5 shadow-[var(--shadow-soft)]">
+          <div className="aspect-[4/5] overflow-hidden rounded-[22px] bg-(--bg-tertiary)">
+            <img src={dp} alt="Rithika Ramasamy" className="h-full w-full object-cover" />
+          </div>
+        </div>
+      </div>
+
+      <div className="order-3 space-y-8">
+        <div className="space-y-5">
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-accent">Software Engineer</p>
+            <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight tracking-tight text-(--text-primary) font-heading sm:text-5xl md:text-[3.5rem]">
+              Rithika Ramasamy
+            </h1>
+            <h2 className="mt-4 max-w-3xl text-xl font-semibold leading-8 text-(--text-secondary) sm:text-2xl">
+              Building reliable backend systems and product-focused full-stack applications.
+            </h2>
+          </div>
+
+          <p className="max-w-2xl text-base leading-8 text-(--text-secondary)">
+            I build high-throughput backend systems and full-stack applications with MERN, TypeScript, and applied AI.
+            Currently engineering payment infrastructure and microservices at Neokred, with a focus on reliability,
+            clean architecture, and measurable product impact.
+          </p>
+        </div>
+
+        <div className="flex flex-wrap gap-3">
+          <button
+            onClick={() => scrollTo('projects')}
+            className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-strong cursor-pointer"
+          >
+            View Projects
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+          <button
+            onClick={() => scrollTo('contact')}
+            className="inline-flex items-center gap-2 rounded-full border border-(--border-secondary) bg-(--bg-secondary) px-5 py-3 text-sm font-semibold text-(--text-primary) transition-colors hover:bg-(--surface-hover) cursor-pointer"
+          >
+            Contact Me
+          </button>
+        </div>
+
+        <div className="space-y-3 border-t border-(--border-primary) pt-6">
+          <p className="text-sm leading-7 text-(--text-secondary)">
+            Before moving fully into software, I trained as an architect. That background still shapes how I think:
+            I naturally focus on structure, scale, and long-term maintainability, whether the task is backend service
+            design, access control, or a data model.
+          </p>
+          <p className="text-sm leading-7 text-(--text-secondary)">
+            I enjoy end-to-end ownership and care about systems that are predictable, extensible, and usable in the
+            real world. Currently sharpening my depth in data structures, system design, and AI deployment.
+          </p>
+        </div>
+      </div>
     </section>
   )
 }

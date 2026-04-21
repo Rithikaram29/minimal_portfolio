@@ -1,68 +1,49 @@
 export const Skills = () => {
   const skillSections = [
     {
-      title: "Backend Architecture",
+      title: "Backend & Infrastructure",
       subtitle: "Scalable Services",
-      skills: [
-        "Node.js",
-        "TypeScript",
-        "Microservices",
-        "Kafka",
-        "Redis",
-        "GraphQL",
-      ],
-    },
-    {
-      title: "AI Engineering",
-      subtitle: "Applied Intelligence",
-      skills: [
-        "LLM Integrations",
-        "RAG Workflows",
-        "Prompt Systems",
-        "Agentic Flows",
-        "Python",
-      ],
+      skills: ["Node.js", "TypeScript", "Express", "Microservices", "PostgreSQL", "MongoDB", "Redis", "Kafka", "GraphQL"],
     },
     {
       title: "Frontend Engineering",
       subtitle: "Interactive Systems",
-      skills: [
-        "React & Next.js",
-        "State Management",
-        "Component Architecture",
-        "Responsive Design",
-        "Performance Optimization",
-      ],
+      skills: ["React", "Next.js", "Tailwind CSS", "State Management", "Component Architecture", "Responsive Design"],
     },
     {
-      title: "Product Execution",
-      subtitle: "End-to-End Build",
-      skills: ["Next.js", "React", "PostgreSQL", "API Design", "System Design"],
+      title: "AI & Machine Learning",
+      subtitle: "Applied Intelligence",
+      skills: ["Python", "YOLOv8", "LLM Integrations", "RAG Workflows", "Prompt Engineering", "Agentic Flows"],
     },
-  ];
+    {
+      title: "Tools & Practices",
+      subtitle: "Engineering Craft",
+      skills: ["System Design", "API Design", "Supabase", "Git", "Docker", "Vercel", "Structured Logging"],
+    },
+  ]
 
   return (
-    <section className="w-full py-4">
-      <div className="max-w-6xl mx-auto grid gap-8 md:grid-cols-2">
+    <section className="w-full">
+      <div className="grid gap-4 md:grid-cols-2">
         {skillSections.map((section) => (
           <div
             key={section.title}
-            className="rounded-2xl border border-(--border-primary) bg-(--bg-card) p-6 shadow-sm hover:shadow-md hover:border-accent/30 transition-all duration-200"
+            className="rounded-xl border border-(--border-primary) bg-(--bg-secondary) p-5 shadow-[var(--shadow-card)]"
           >
             <div className="mb-4">
-              <h3 className="text-lg font-semibold text-(--text-primary) font-heading">
-                {section.title}
-              </h3>
-              <p className="text-sm text-(--text-tertiary)">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
                 {section.subtitle}
               </p>
+              <h3 className="mt-1 text-base font-semibold text-(--text-primary) font-heading">
+                {section.title}
+              </h3>
             </div>
 
             <div className="flex flex-wrap gap-2">
               {section.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="px-3 py-1.5 text-xs font-medium rounded-full bg-(--bg-tertiary) text-(--text-secondary) hover:bg-accent/10 hover:text-accent transition-colors duration-150"
+                  className="rounded-md border border-(--border-primary) bg-(--bg-card) px-2.5 py-1 text-xs font-medium text-(--text-secondary)"
                 >
                   {skill}
                 </span>
@@ -72,5 +53,5 @@ export const Skills = () => {
         ))}
       </div>
     </section>
-  );
-};
+  )
+}

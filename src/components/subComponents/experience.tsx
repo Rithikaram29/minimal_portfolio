@@ -4,132 +4,65 @@ export const Experience = () => {
       company: "Neokred",
       joiningYr: "2025",
       endingYr: "Present",
-      jobDesc:
-        `- Developing and scaling backend systems powering high-throughput payment infrastructure and microservices-driven financial workflows.
-         - Engineered core backend components for merchant onboarding and settlement services, supporting 100+ merchants and processing $50M+ in monthly transaction volume.
-         - Improved observability across microservices by integrating structured logging and monitoring, reducing production issue resolution time by 60%
-        `,
-      designation: "SDE1",
+      jobDesc: [
+        "Developing and scaling backend systems powering high-throughput payment infrastructure and microservices-driven financial workflows",
+        "Engineered core backend components for merchant onboarding and settlement services, supporting 100+ merchants and processing $50M+ in monthly transaction volume",
+        "Improved observability across microservices by integrating structured logging and monitoring, reducing production issue resolution time by 60%",
+      ],
+      designation: "Software Engineer I",
     },
     {
-      company: "Center for vernacular architecture",
+      company: "Center for Vernacular Architecture",
       joiningYr: "2023",
       endingYr: "2024",
-      jobDesc:
-        "Planned construction timeline and designs for projects, managed client requirements and payments",
-      designation: "Jr.Architect",
+      jobDesc: [
+        "Planned construction timelines and technical documentation for heritage conservation projects",
+        "Managed client requirements, design iterations, and project payment milestones",
+      ],
+      designation: "Jr. Architect",
     },
     {
-      company: "Midori architects",
+      company: "Midori Architects",
       joiningYr: "2023",
       endingYr: "2023",
-      jobDesc:
-        "Computational designs with weather and other enviromental analysis.",
-      designation: "Jr.Architect",
+      jobDesc: [
+        "Produced computational designs incorporating weather and environmental performance analysis",
+      ],
+      designation: "Jr. Architect",
     },
-  ];
-
-  const renderDesc = (desc: string) => {
-    const lines = desc
-      .split("\n")
-      .map((l) => l.trim())
-      .filter(Boolean);
-
-    const isBulletList = lines.every((l) => l.startsWith("-"));
-
-    if (isBulletList) {
-      return (
-        <ul className="mt-2 space-y-1 text-left">
-          {lines.map((line, i) => (
-            <li key={i} className="text-sm text-(--text-secondary) leading-relaxed">
-              {line}
-            </li>
-          ))}
-        </ul>
-      );
-    }
-
-    return (
-      <p className="text-sm text-(--text-secondary) mt-2">
-        {desc}
-      </p>
-    );
-  };
+  ]
 
   return (
-    <div className="w-full h-fit rounded-2xl bg-(--bg-card) border border-(--border-primary)">
-      {/* Mobile: Vertical timeline */}
-      <div className="md:hidden relative px-4 py-6">
-        <div className="absolute left-7 top-6 bottom-6 w-0.5 bg-linear-to-b from-accent/20 via-accent/50 to-accent/20"></div>
-        <div className="space-y-6">
-          {expArray.map((exp, index) => (
-            <div key={index} className="relative flex gap-4 items-start">
-              <div className="w-3 h-3 bg-accent rounded-full z-10 ring-4 ring-(--bg-card) mt-1.5 shrink-0"></div>
-              <div className="flex-1 min-w-0">
-                <h3 className="text-base font-semibold text-(--text-primary) font-heading">
-                  {exp.designation}
-                </h3>
-                <p className="text-sm text-(--text-tertiary)">
-                  {exp.company} • {exp.joiningYr} - {exp.endingYr}
-                </p>
-                {renderDesc(exp.jobDesc)}
+    <div className="relative w-full">
+      <div className="absolute bottom-0 left-3 top-0 w-px bg-linear-to-b from-transparent via-accent/35 to-transparent sm:left-4" />
+      <div className="space-y-5">
+        {expArray.map((exp, index) => (
+          <div key={index} className="relative pl-10 sm:pl-12">
+            <div className="absolute left-0 top-6 h-3 w-3 rounded-full bg-accent ring-4 ring-(--bg-card) sm:left-[0.2rem]" />
+            <article className="rounded-xl border border-(--border-primary) bg-(--bg-secondary) p-5 shadow-[var(--shadow-card)]">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">{exp.company}</p>
+                  <h3 className="mt-1 text-base font-semibold text-(--text-primary) font-heading">
+                    {exp.designation}
+                  </h3>
+                </div>
+                <span className="self-start rounded-md border border-(--border-primary) bg-(--bg-card) px-2.5 py-1 text-xs font-medium text-(--text-secondary) whitespace-nowrap">
+                  {exp.joiningYr} – {exp.endingYr}
+                </span>
               </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Desktop: Horizontal alternating timeline */}
-      <div className="hidden md:block overflow-x-auto">
-        <div className="relative flex gap-16 min-w-max px-8 py-16">
-          <div className="absolute top-1/2 left-0 w-full h-0.5 bg-linear-to-r from-accent/20 via-accent/50 to-accent/20 -translate-y-1/2"></div>
-
-          {expArray.map((exp, index) => {
-            const isTop = index % 2 === 0;
-
-            return (
-              <div
-                key={index}
-                className="relative flex flex-col items-center w-96"
-              >
-                {isTop ? (
-                  <>
-                    <div className="mb-[50%] max-h-48 overflow-y-auto text-center px-2">
-                      <h3 className="text-lg font-semibold text-(--text-primary) font-heading">
-                        {exp.designation}
-                      </h3>
-                      <p className="text-sm text-(--text-tertiary)">
-                        {exp.company} • {exp.joiningYr} - {exp.endingYr}
-                      </p>
-                      {renderDesc(exp.jobDesc)}
-                    </div>
-
-                    <div className="w-3 h-3 bg-accent rounded-full z-10 ring-4 ring-(--bg-card)"></div>
-
-                    <div className="mt-10"></div>
-                  </>
-                ) : (
-                  <>
-                    <div className="mb-10"></div>
-
-                    <div className="w-3 h-3 bg-accent rounded-full z-10 ring-4 ring-(--bg-card)"></div>
-
-                    <div className="mt-[50%] max-h-48 overflow-y-auto text-center px-2">
-                      <h3 className="text-lg font-semibold text-(--text-primary) font-heading">
-                        {exp.designation}
-                      </h3>
-                      <p className="text-sm text-(--text-tertiary)">
-                        {exp.company} • {exp.joiningYr} - {exp.endingYr}
-                      </p>
-                      {renderDesc(exp.jobDesc)}
-                    </div>
-                  </>
-                )}
-              </div>
-            );
-          })}
-        </div>
+              <ul className="mt-3 space-y-2">
+                {exp.jobDesc.map((line, i) => (
+                  <li key={i} className="flex gap-2.5 text-sm text-(--text-secondary) leading-6">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/50" />
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </div>
+        ))}
       </div>
     </div>
-  );
-};
+  )
+}

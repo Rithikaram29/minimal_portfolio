@@ -7,43 +7,38 @@
 
 /* ── Design tokens via @theme ── */
 @theme {
-  /* Teal — interactive: links, hover, nav active */
-  --color-accent: #4FA095;
-  --color-accent-soft: #a3d5ce;
-  --color-accent-strong: #3d8a80;
-
-  /* Dusty Blue — headings, underlines, subtle borders */
-  --color-accent-blue: #5B7C93;
-  --color-accent-blue-soft: #8faabb;
-
-  /* Soft Coral — CTAs, badges, highlights */
-  --color-accent-coral: #D97C7C;
-  --color-accent-coral-soft: #e8a5a5;
-  --color-accent-coral-muted: #c46b6b;
+  --color-accent: #2f5b8f;
+  --color-accent-soft: #d8e5f3;
+  --color-accent-strong: #21456f;
+  --color-accent-blue: #15314e;
+  --color-accent-blue-soft: #7f97b0;
+  --color-accent-coral: #8f5b4a;
+  --color-accent-coral-soft: #d7bbb1;
+  --color-accent-coral-muted: #74483a;
 
   --font-heading: 'Satoshi', 'General Sans', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 
-  --animate-glow-line: glow-line 3s ease-in-out infinite;
-  --animate-float-gentle: float-gentle 4s ease-in-out infinite;
 }
 
 /* ── Light theme (default) ── */
 :root {
-  --bg-primary: #F5F3EE;
-  --bg-secondary: #FFFFFF;
-  --bg-tertiary: #EDE9E1;
-  --bg-card: #FFFFFF;
-  --bg-body: #EFECE6;
+  --bg-primary: #e9eef3;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f3f6f9;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-body: #f7f9fb;
 
-  --text-primary: #2F3A45;
-  --text-secondary: #6B7280;
-  --text-tertiary: #9CA3AF;
+  --text-primary: #14202b;
+  --text-secondary: #465766;
+  --text-tertiary: #738395;
 
-  --border-primary: #D9D4C7;
-  --border-secondary: #C9C3B6;
+  --border-primary: rgba(20, 32, 43, 0.1);
+  --border-secondary: rgba(20, 32, 43, 0.18);
 
-  --surface-hover: #EDE9E1;
+  --surface-hover: #eff4f8;
+  --shadow-soft: 0 28px 60px rgba(15, 33, 53, 0.12);
+  --shadow-card: 0 14px 32px rgba(15, 33, 53, 0.08);
 
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-synthesis: none;
@@ -54,20 +49,22 @@
 
 /* ── Dark theme — warm moody ── */
 .dark {
-  --bg-primary: #1F2A30;
-  --bg-secondary: #26343C;
-  --bg-tertiary: #2E3E47;
-  --bg-card: #26343C;
-  --bg-body: #1A252B;
+  --bg-primary: #0d1620;
+  --bg-secondary: #101c28;
+  --bg-tertiary: #172533;
+  --bg-card: rgba(16, 28, 40, 0.9);
+  --bg-body: #0a131b;
 
-  --text-primary: #E6E3DD;
-  --text-secondary: #A3B1B8;
-  --text-tertiary: #728690;
+  --text-primary: #eef3f8;
+  --text-secondary: #a8b8c7;
+  --text-tertiary: #7a8b9c;
 
-  --border-primary: #3A4D56;
-  --border-secondary: #4A5F6A;
+  --border-primary: rgba(202, 214, 228, 0.12);
+  --border-secondary: rgba(202, 214, 228, 0.2);
 
-  --surface-hover: #2E3E47;
+  --surface-hover: #152230;
+  --shadow-soft: 0 28px 60px rgba(0, 0, 0, 0.38);
+  --shadow-card: 0 16px 34px rgba(0, 0, 0, 0.28);
 }
 
 /* ── Base resets ── */
@@ -77,21 +74,26 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
+  background-image:
+    radial-gradient(circle at top left, rgba(47, 91, 143, 0.1), transparent 26%),
+    radial-gradient(circle at 85% 15%, rgba(21, 49, 78, 0.08), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0));
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Satoshi', 'General Sans', system-ui, sans-serif;
 }
 
-/* ── Keyframes ── */
-@keyframes glow-line {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.8; }
+a {
+  color: inherit;
 }
 
-@keyframes float-gentle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+::selection {
+  background: rgba(47, 91, 143, 0.2);
+}
+
+#root {
+  min-height: 100svh;
 }
 
 /* ── Scroll-triggered fade-in ── */
@@ -103,23 +105,4 @@ h1, h2, h3, h4, h5, h6 {
 .fade-in-section.is-visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* ── Pixel grid overlay (game section) ── */
-.pixel-grid-overlay {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 8px 8px;
-}
-
-/* ── Film grain overlay ── */
-.grain-overlay::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0.03;
-  pointer-events: none;
-  border-radius: inherit;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
 }

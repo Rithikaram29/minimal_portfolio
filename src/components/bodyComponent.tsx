@@ -3,15 +3,20 @@ import { Experience } from "./subComponents/experience"
 import { HeroAbout } from "./subComponents/heroabout"
 import { Projects } from "./subComponents/projects"
 import { Skills } from "./subComponents/skills"
-import { SmallGame } from "./subComponents/smallGame"
 import { Contact } from "./subComponents/contact"
 import { Contributions } from "./subComponents/contributions"
 
+const SectionHeader = ({ title, subtitle }: { title: string; subtitle?: string }) => (
+  <div className="mb-8">
+    <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-accent">{title}</p>
+    {subtitle && <p className="mt-2 text-sm text-(--text-tertiary)">{subtitle}</p>}
+    <div className="mt-4 h-px w-full bg-linear-to-r from-accent/30 via-(--border-primary) to-transparent" />
+  </div>
+)
+
 export const BodyComponent = () => {
   const mainRef = useRef<HTMLElement>(null)
-  const gameRef = useRef<HTMLDivElement>(null)
 
-  // Fade-in on scroll observer
   useEffect(() => {
     const main = mainRef.current
     if (!main) return
@@ -26,93 +31,51 @@ export const BodyComponent = () => {
           }
         })
       },
-      { threshold: 0.1, root: main }
+      { threshold: 0.08, root: main }
     )
     sections.forEach(s => observer.observe(s))
     return () => observer.disconnect()
   }, [])
 
-  // Parallax effect on game section
-  useEffect(() => {
-    const main = mainRef.current
-    const game = gameRef.current
-    if (!main || !game) return
-
-    let ticking = false
-    const handleScroll = () => {
-      if (ticking) return
-      ticking = true
-      requestAnimationFrame(() => {
-        const offset = main.scrollTop * 0.3
-        game.style.transform = `translateY(${offset}px)`
-        ticking = false
-      })
-    }
-
-    main.addEventListener('scroll', handleScroll, { passive: true })
-    return () => main.removeEventListener('scroll', handleScroll)
-  }, [])
-
   return (
-    <main ref={mainRef} className="w-full md:w-3/4 bg-(--bg-body) text-(--text-primary) h-svh overflow-y-auto transition-colors duration-300">
-      <div className="p-4 sm:p-6 md:p-8">
-        <div className="rounded-xl overflow-hidden border border-(--border-primary)">
-          {/* Game section with parallax */}
-          <div className="h-40 sm:h-48 md:h-56 bg-(--bg-tertiary) flex items-center justify-center overflow-hidden relative">
-            <div ref={gameRef} className="w-full h-full will-change-transform">
-              <SmallGame />
-            </div>
-          </div>
+    <main ref={mainRef} className="w-full bg-(--bg-body) text-(--text-primary) transition-colors duration-300">
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 md:py-8 lg:px-8">
+        <div className="space-y-8 md:space-y-12">
 
-          <div className="px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 space-y-12 md:space-y-16 bg-(--bg-card)">
-            <div id="about" className="fade-in-section">
-              <h2 className="text-xl sm:text-2xl font-bold text-(--text-primary) font-heading">Hi, I am Rithika!</h2>
-              <div className="mt-2 h-0.5 w-12 bg-accent-blue rounded-full" />
-              <div className="mt-6">
-                <HeroAbout />
-              </div>
-            </div>
+            {/* Hero / About */}
+            <section id="about" className="fade-in-section scroll-mt-28 rounded-[28px] border border-(--border-primary) bg-linear-to-br from-(--bg-secondary) via-(--bg-secondary) to-(--bg-tertiary) p-6 shadow-[var(--shadow-soft)] md:p-10">
+              <HeroAbout />
+            </section>
 
-            <div id="skills" className="fade-in-section">
-              <h2 className="text-xl font-semibold tracking-tight uppercase text-(--text-primary) font-heading">Technical Expertise</h2>
-              <div className="mt-2 h-0.5 w-12 bg-accent-blue rounded-full" />
-              <div className="mt-6">
-                <Skills />
-              </div>
-            </div>
+            {/* Projects — featured first */}
+            <section id="projects" className="fade-in-section scroll-mt-28 rounded-[24px] border border-(--border-primary) bg-(--bg-secondary) p-6 shadow-[var(--shadow-card)] md:p-8">
+              <SectionHeader title="Projects" subtitle="Selected engineering work" />
+              <Projects />
+            </section>
 
-            <div id="experience" className="fade-in-section">
-              <h2 className="text-xl font-semibold tracking-tight uppercase text-(--text-primary) font-heading">Experience</h2>
-              <div className="mt-2 h-0.5 w-12 bg-accent-blue rounded-full" />
-              <div className="mt-6">
-                <Experience />
-              </div>
-            </div>
+            {/* Experience */}
+            <section id="experience" className="fade-in-section scroll-mt-28 rounded-[24px] border border-(--border-primary) bg-(--bg-secondary) p-6 shadow-[var(--shadow-card)] md:p-8">
+              <SectionHeader title="Experience" />
+              <Experience />
+            </section>
 
-            <div id="projects" className="fade-in-section">
-              <h2 className="text-xl font-semibold tracking-tight uppercase text-(--text-primary) font-heading">Projects</h2>
-              <div className="mt-2 h-0.5 w-12 bg-accent-blue rounded-full" />
-              <div className="mt-6">
-                <Projects />
-              </div>
-            </div>
+            {/* Skills */}
+            <section id="skills" className="fade-in-section scroll-mt-28 rounded-[24px] border border-(--border-primary) bg-(--bg-secondary) p-6 shadow-[var(--shadow-card)] md:p-8">
+              <SectionHeader title="Technical Skills" />
+              <Skills />
+            </section>
 
-            <div id="contributions" className="fade-in-section">
-              <h2 className="text-xl font-semibold tracking-tight uppercase text-(--text-primary) font-heading">Contributions</h2>
-              <div className="mt-2 h-0.5 w-12 bg-accent-blue rounded-full" />
-              <div className="mt-6">
-                <Contributions />
-              </div>
-            </div>
+            {/* Contributions */}
+            <section id="contributions" className="fade-in-section scroll-mt-28 rounded-[24px] border border-(--border-primary) bg-(--bg-secondary) p-6 shadow-[var(--shadow-card)] md:p-8">
+              <SectionHeader title="Contributions" subtitle="GitHub & LeetCode activity" />
+              <Contributions />
+            </section>
 
-            <div id="contact" className="fade-in-section">
-              <h2 className="text-xl font-semibold tracking-tight uppercase text-(--text-primary) font-heading">Get in Touch</h2>
-              <div className="mt-2 h-0.5 w-12 bg-accent-coral rounded-full" />
-              <div className="mt-6">
-                <Contact />
-              </div>
-            </div>
-          </div>
+            {/* Contact */}
+            <section id="contact" className="fade-in-section scroll-mt-28 rounded-[24px] border border-(--border-primary) bg-(--bg-secondary) p-6 shadow-[var(--shadow-card)] md:p-8">
+              <SectionHeader title="Get in Touch" />
+              <Contact />
+            </section>
         </div>
       </div>
     </main>
