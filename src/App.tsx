@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { BodyComponent } from './components/bodyComponent'
 import { useTheme } from './hooks/useTheme'
+import resumePdf from './assets/RITHIKA_RAMASAMY_RESUME.pdf'
 
 const navItems = [
   { id: 'about', label: 'About' },
@@ -15,6 +16,7 @@ const navItems = [
 function App() {
   const { theme, toggle } = useTheme()
   const [menuOpen, setMenuOpen] = useState(false)
+  const cvHref = resumePdf
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id)
@@ -49,7 +51,7 @@ function App() {
 
           <div className="flex items-center gap-2">
             <a
-              href="/src/assets/RITHIKA_RAMASAMY_RESUME.pdf"
+              href={cvHref}
               download
               className="hidden rounded-full bg-accent px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-strong md:inline-flex"
             >
@@ -101,7 +103,7 @@ function App() {
                 </button>
               ))}
               <a
-                href="/Rithika-Ramasamy-CV.txt"
+                href={cvHref}
                 download
                 className="mt-2 inline-flex justify-center rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-strong"
               >
