@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://resume-kohl-mu-90.vercel.app/sitemap.xml

@@ -1,4 +1,4 @@
-import dp from "../../assets/dp.jpg"
+import dp from "../../assets/dp.webp"
 
 const scrollTo = (id: string) => {
   const el = document.getElementById(id)
@@ -34,7 +34,14 @@ export const HeroAbout = () => {
         <div className="absolute -inset-4 rounded-[32px] bg-linear-to-br from-accent/12 via-transparent to-accent-blue/10 blur-2xl" />
         <div className="relative overflow-hidden rounded-[28px] bg-(--bg-card) p-5 shadow-[var(--shadow-soft)]">
           <div className="aspect-[4/5] overflow-hidden rounded-[22px] bg-(--bg-tertiary)">
-            <img src={dp} alt="Rithika Ramasamy" className="h-full w-full object-cover" />
+            <img
+              src={dp}
+              alt="Rithika Ramasamy"
+              width={1024}
+              height={1024}
+              fetchPriority="high"
+              className="h-full w-full object-cover"
+            />
           </div>
         </div>
       </div>

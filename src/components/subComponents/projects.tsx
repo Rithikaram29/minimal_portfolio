@@ -1,7 +1,7 @@
-const goBoardVideo = new URL('../../assets/go-board.mp4', import.meta.url).href
-const sugarCosmeticsVideo = new URL('../../assets/sugar-cosmetics.mp4', import.meta.url).href
-const eleven11Video = new URL('../../assets/grok-video-f050df5b-dafb-4b03-9e54-1672f83fd92a.mp4', import.meta.url).href
-const grocerVideo = new URL('../../assets/grocer.mp4', import.meta.url).href
+import goBoardVideo from '../../assets/go-board.mp4'
+import sugarCosmeticsVideo from '../../assets/sugar-cosmetics.mp4'
+import eleven11Video from '../../assets/grok-video-f050df5b-dafb-4b03-9e54-1672f83fd92a.mp4'
+import grocerVideo from '../../assets/grocer.mp4'
 
 type Project = {
   name: string

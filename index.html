@@ -5,10 +5,78 @@
     <link rel="icon" type="image/png" href="/src/assets/web_logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>portfolio-minimal</title>
+    <title>Rithika Ramasamy - Full-Stack, AI &amp; Product Engineer</title>
+    <meta
+      name="description"
+      content="Rithika Ramasamy is a full-stack engineer in Bengaluru building backend systems, payment microservices and applied AI with TypeScript, Node.js and React."
+    />
+    <link rel="canonical" href="https://resume-kohl-mu-90.vercel.app/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Rithika Ramasamy" />
+    <meta property="og:title" content="Rithika Ramasamy - Full-Stack, AI &amp; Product Engineer" />
+    <meta
+      property="og:description"
+      content="Rithika Ramasamy is a full-stack engineer in Bengaluru building backend systems, payment microservices and applied AI with TypeScript, Node.js and React."
+    />
+    <meta property="og:url" content="https://resume-kohl-mu-90.vercel.app/" />
+    <meta property="og:image" content="https://resume-kohl-mu-90.vercel.app/og-image.jpg" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="1024" />
+    <meta property="og:image:alt" content="Rithika Ramasamy" />
+    <meta property="profile:first_name" content="Rithika" />
+    <meta property="profile:last_name" content="Ramasamy" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Rithika Ramasamy - Full-Stack, AI &amp; Product Engineer" />
+    <meta
+      name="twitter:description"
+      content="Rithika Ramasamy is a full-stack engineer in Bengaluru building backend systems, payment microservices and applied AI with TypeScript, Node.js and React."
+    />
+    <meta name="twitter:image" content="https://resume-kohl-mu-90.vercel.app/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Rithika Ramasamy" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Rithika Ramasamy",
+        "jobTitle": "Software Engineer",
+        "description": "Full-stack software engineer building backend systems, payment microservices and applied AI.",
+        "url": "https://resume-kohl-mu-90.vercel.app/",
+        "image": "https://resume-kohl-mu-90.vercel.app/og-image.jpg",
+        "worksFor": { "@type": "Organization", "name": "Neokred" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Bengaluru", "addressCountry": "IN" },
+        "sameAs": [
+          "https://github.com/Rithikaram29",
+          "https://leetcode.com/u/Rithika_29",
+          "https://www.linkedin.com/in/rithika-r-0b0526213/"
+        ],
+        "knowsAbout": [
+          "Node.js", "TypeScript", "Express", "Microservices", "PostgreSQL", "MongoDB", "Redis", "Kafka", "GraphQL",
+          "React", "Next.js", "Tailwind CSS",
+          "Python", "YOLOv8", "LLM Integrations", "RAG Workflows", "Prompt Engineering", "Agentic Flows",
+          "System Design", "API Design", "Docker"
+        ]
+      }
+    </script>
+
+    <!-- Apply the saved / system theme before first paint to avoid a flash -->
+    <script>
+      (function () {
+        var theme = null
+        try { theme = localStorage.getItem('portfolio-theme') } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
+        document.documentElement.classList.toggle('dark', theme === 'dark')
+      })()
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"><!--app-html--></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -1,5 +1,6 @@
-import { useEffect, useState, useMemo } from "react"
+import { useEffect, useState, useMemo, useSyncExternalStore } from "react"
 import { GitHubCalendar } from "react-github-calendar"
+import { useTheme } from "../../hooks/useTheme"
 
 type LeetCodeDay = {
   date: string
@@ -196,22 +197,17 @@ function LeetCodeCalendar({ username }: LeetCodeCalendarProps) {
   )
 }
 
-function useDarkMode() {
-  const [isDark, setIsDark] = useState(() =>
-    document.documentElement.classList.contains('dark')
-  )
-  useEffect(() => {
-    const observer = new MutationObserver(() => {
-      setIsDark(document.documentElement.classList.contains('dark'))
-    })
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
-    return () => observer.disconnect()
-  }, [])
-  return isDark
+const noopSubscribe = () => () => {}
+
+// True only in the browser after hydration. GitHubCalendar reads matchMedia and measures
+// text while rendering, so it can't be pre-rendered without a hydration mismatch.
+function useIsClient() {
+  return useSyncExternalStore(noopSubscribe, () => true, () => false)
 }
 
 export const Contributions = () => {
-  const isDark = useDarkMode()
+  const isDark = useTheme().theme === 'dark'
+  const isClient = useIsClient()
 
   return (
     <div className="space-y-6">
@@ -232,13 +228,19 @@ export const Contributions = () => {
           </a>
         </div>
         <div className="overflow-x-auto rounded-xl border border-(--border-primary) bg-(--bg-card) p-3">
-          <GitHubCalendar
-            username="Rithikaram29"
-            colorScheme={isDark ? 'dark' : 'light'}
-            fontSize={12}
-            blockSize={10}
-            blockMargin={2}
-          />
+          {isClient ? (
+            <GitHubCalendar
+              username="Rithikaram29"
+              colorScheme={isDark ? 'dark' : 'light'}
+              fontSize={12}
+              blockSize={10}
+              blockMargin={2}
+            />
+          ) : (
+            <div className="flex items-center justify-center py-8 text-(--text-tertiary) text-sm">
+              Loading GitHub activity...
+            </div>
+          )}
         </div>
       </div>
 
