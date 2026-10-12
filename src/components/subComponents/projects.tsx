@@ -3,72 +3,25 @@ import sugarCosmeticsVideo from '../../assets/sugar-cosmetics.mp4'
 import eleven11Video from '../../assets/grok-video-f050df5b-dafb-4b03-9e54-1672f83fd92a.mp4'
 import grocerVideo from '../../assets/grocer.mp4'
 
-type Project = {
-  name: string
-  video: string
-  description: string
-  stack?: string[]
-  bullets?: string[]
-  liveStatus?: boolean
-  link?: string
-  githubLink?: string
+import { projects } from '../../data/portfolio.ts'
+
+const videos: Record<string, string> = {
+  'go-boarding': goBoardVideo,
+  'sugar-cosmetics-replica': sugarCosmeticsVideo,
+  'indian-grocery-detection': grocerVideo,
+  'eleven11-app': eleven11Video,
 }
 
-const projectsArr: Project[] = [
-  {
-    name: 'Go Boarding',
-    video: goBoardVideo,
-    description: 'Dual-portal bus reservation platform with operator controls and end-to-end passenger booking.',
-    stack: ['React', 'Node.js', 'Express', 'MongoDB'],
-    bullets: [
-      'Operator portal for route setup, scheduling, and seat layout configuration',
-      'Full passenger booking flow: route search → seat selection → confirmation',
-      'Separate admin and customer views with role-based access control',
-    ],
-    liveStatus: true,
-    link: 'https://go-boarding-bus-app-yfk7.vercel.app/',
-    githubLink: 'https://github.com/Rithikaram29/go-boarding-bus-app',
-  },
-  {
-    name: 'Sugar Cosmetics — Replica',
-    video: sugarCosmeticsVideo,
-    description: 'High-fidelity product page replica with dynamic rendering, cart state management, and add-to-cart flow.',
-    stack: ['React', 'JavaScript', 'CSS'],
-    bullets: [
-      'Reproduced complex product grid with category filters and dynamic data rendering',
-      'State-driven cart with add/remove logic and persistent item count',
-      'Pixel-accurate responsive layout matching original breakpoint behavior',
-    ],
-    liveStatus: false,
-    link: 'https://sugar-cosmetics-replica-8w5sh1xx6-rithikaram29s-projects.vercel.app/',
-    githubLink: 'https://github.com/Rithikaram29/sugar-cosmetics-replica',
-  },
-  {
-    name: 'Indian Grocery Detection',
-    video: grocerVideo,
-    description: 'ML-powered grocery detection with a human-in-the-loop correction system for continuous model improvement.',
-    stack: ['Python', 'YOLOv8', 'Supabase', 'FastAPI'],
-    bullets: [
-      'Custom YOLOv8 model trained on an Indian grocery image dataset',
-      'Human-in-the-loop: users draw bounding box corrections stored for retraining',
-      'Supabase backend persists annotations and images for incremental fine-tuning',
-    ],
-    liveStatus: true,
-    githubLink: 'https://github.com/Rithikaram29/indian-grocery-detection',
-    link: 'https://www.linkedin.com/posts/rithika-r-0b0526213_machinelearning-learninginpublic-yolov8-ugcPost-7364238199696576512-KSa3?utm_source=share&utm_medium=member_desktop&rcm=ACoAADYBNwQB5gY6IASKuv1tr2bDwdC8DP3ap7E',
-  },
-  {
-    name: 'Eleven11 App',
-    video: eleven11Video,
-    description: 'Mobile application live on the Google Play Store, developed at Eleven11 Studios.',
-    bullets: [
-      'Published on Google Play Store with active users',
-      'End-to-end mobile app development from design to deployment',
-    ],
-    liveStatus: true,
-    link: 'https://play.google.com/store/apps/details?id=com.eleven11studios.eleven11',
-  },
-]
+const projectsArr = projects.map((p) => ({
+  name: p.name,
+  video: videos[p.id],
+  description: p.description,
+  stack: p.stack.length > 0 ? p.stack : undefined,
+  bullets: p.highlights,
+  liveStatus: p.live,
+  link: p.url,
+  githubLink: p.repoUrl,
+}))
 
 export const Projects = () => {
   return (

@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# AI agents and assistants are welcome. Machine-readable versions of this site:
+#   /llms.txt        short index        /llms-full.txt   whole portfolio as text
+#   /agent           JSON API + manifest /mcp             read-only MCP server
+
 Sitemap: https://resume-kohl-mu-90.vercel.app/sitemap.xml

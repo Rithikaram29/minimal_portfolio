@@ -1,36 +1,13 @@
+import { experience } from "../../data/portfolio.ts"
+
 export const Experience = () => {
-  const expArray = [
-    {
-      company: "Neokred",
-      joiningYr: "2025",
-      endingYr: "Present",
-      jobDesc: [
-        "Developing and scaling backend systems powering high-throughput payment infrastructure and microservices-driven financial workflows",
-        "Engineered core backend components for merchant onboarding and settlement services, supporting 100+ merchants and processing $50M+ in monthly transaction volume",
-        "Improved observability across microservices by integrating structured logging and monitoring, reducing production issue resolution time by 60%",
-      ],
-      designation: "Software Engineer I",
-    },
-    {
-      company: "Center for Vernacular Architecture",
-      joiningYr: "2023",
-      endingYr: "2024",
-      jobDesc: [
-        "Planned construction timelines and technical documentation for heritage conservation projects",
-        "Managed client requirements, design iterations, and project payment milestones",
-      ],
-      designation: "Jr. Architect",
-    },
-    {
-      company: "Midori Architects",
-      joiningYr: "2023",
-      endingYr: "2023",
-      jobDesc: [
-        "Produced computational designs incorporating weather and environmental performance analysis",
-      ],
-      designation: "Jr. Architect",
-    },
-  ]
+  const expArray = experience.map((e) => ({
+    company: e.company,
+    joiningYr: e.start,
+    endingYr: e.end ?? "Present",
+    jobDesc: e.highlights,
+    designation: e.title,
+  }))
 
   return (
     <div className="relative w-full">

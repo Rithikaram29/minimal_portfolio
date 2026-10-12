@@ -1,26 +1,7 @@
+import { skillCategories } from "../../data/portfolio.ts"
+
 export const Skills = () => {
-  const skillSections = [
-    {
-      title: "Backend & Infrastructure",
-      subtitle: "Scalable Services",
-      skills: ["Node.js", "TypeScript", "Express", "Microservices", "PostgreSQL", "MongoDB", "Redis", "Kafka", "GraphQL"],
-    },
-    {
-      title: "Frontend Engineering",
-      subtitle: "Interactive Systems",
-      skills: ["React", "Next.js", "Tailwind CSS", "State Management", "Component Architecture", "Responsive Design"],
-    },
-    {
-      title: "AI & Machine Learning",
-      subtitle: "Applied Intelligence",
-      skills: ["Python", "YOLOv8", "LLM Integrations", "RAG Workflows", "Prompt Engineering", "Agentic Flows"],
-    },
-    {
-      title: "Tools & Practices",
-      subtitle: "Engineering Craft",
-      skills: ["System Design", "API Design", "Supabase", "Git", "Docker", "Vercel", "Structured Logging"],
-    },
-  ]
+  const skillSections = skillCategories.map((c) => ({ title: c.name, subtitle: c.subtitle, skills: c.skills }))
 
   return (
     <section className="w-full">

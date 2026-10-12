@@ -5,6 +5,7 @@ import { Projects } from "./subComponents/projects"
 import { Skills } from "./subComponents/skills"
 import { Contact } from "./subComponents/contact"
 import { Contributions } from "./subComponents/contributions"
+import { site } from "../data/portfolio.ts"
 
 const SectionHeader = ({ title, subtitle }: { title: string; subtitle?: string }) => (
   <div className="mb-8">
@@ -75,6 +76,17 @@ export const BodyComponent = () => {
             <section id="contact" className="fade-in-section scroll-mt-28 rounded-[24px] border border-(--border-primary) bg-(--bg-secondary) p-6 shadow-[var(--shadow-card)] md:p-8">
               <SectionHeader title="Get in Touch" />
               <Contact />
+            </section>
+
+            {/* For AI agents: visible on purpose, so crawlers and assistants that read page text find it */}
+            <section id="agents" className="fade-in-section scroll-mt-28 rounded-[24px] border border-(--border-primary) bg-(--bg-secondary) p-6 shadow-[var(--shadow-card)] md:p-8">
+              <SectionHeader title="For AI Agents" subtitle="Skip the scraping — everything on this page is available as clean, read-only data." />
+              <ul className="grid gap-3 text-sm text-(--text-secondary) sm:grid-cols-2">
+                <li><a className="font-semibold text-accent hover:underline" href="/llms.txt">/llms.txt</a> – short index of this site</li>
+                <li><a className="font-semibold text-accent hover:underline" href="/llms-full.txt">/llms-full.txt</a> – the whole portfolio as plain text</li>
+                <li><a className="font-semibold text-accent hover:underline" href="/agent">/agent</a> – JSON API and instructions for agents</li>
+                <li><span className="font-semibold text-accent">/mcp</span> – MCP server (add <code>{`${site.url}/mcp`}</code> to an MCP-capable assistant)</li>
+              </ul>
             </section>
         </div>
       </div>

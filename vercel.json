@@ -1,0 +1,15 @@
+{
+  "rewrites": [
+    { "source": "/agent", "destination": "/api/agent" },
+    { "source": "/agent/:path*", "destination": "/api/agent?path=:path*" },
+    { "source": "/mcp", "destination": "/api/mcp" }
+  ],
+  "headers": [
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Link", "value": "</agent>; rel=\"describedby\"; type=\"application/json\", </llms.txt>; rel=\"alternate\"; type=\"text/markdown\"" }
+      ]
+    }
+  ]
+}

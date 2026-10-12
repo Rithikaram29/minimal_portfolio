@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './App.css'
 import { BodyComponent } from './components/bodyComponent'
 import { useTheme } from './hooks/useTheme'
-import resumePdf from './assets/RITHIKA_RAMASAMY_RESUME.pdf'
 
 const navItems = [
   { id: 'about', label: 'About' },
@@ -11,12 +10,13 @@ const navItems = [
   { id: 'skills', label: 'Skills' },
   { id: 'contributions', label: 'Contributions' },
   { id: 'contact', label: 'Contact' },
+  { id: 'agents', label: 'AI Agents' },
 ]
 
 function App() {
   const { theme, toggle } = useTheme()
   const [menuOpen, setMenuOpen] = useState(false)
-  const cvHref = resumePdf
+  const cvHref = '/Rithika-Ramasamy-Resume.pdf'
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id)

@@ -1,9 +1,11 @@
+import { profile } from "../../data/portfolio.ts"
+
 export const Contact = () => {
   const contactMethods = [
     {
       label: "Email",
-      value: "rithikaram293@gmail.com",
-      href: "mailto:rithikaram293@gmail.com",
+      value: profile.email,
+      href: `mailto:${profile.email}`,
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M4 6h16v12H4V6z" />
@@ -24,7 +26,7 @@ export const Contact = () => {
     {
       label: "LinkedIn",
       value: "linkedin.com/in/rithika-r",
-      href: "https://www.linkedin.com/in/rithika-r-0b0526213/",
+      href: profile.links.linkedin,
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
@@ -35,7 +37,7 @@ export const Contact = () => {
     {
       label: "GitHub",
       value: "github.com/Rithikaram29",
-      href: "https://github.com/Rithikaram29",
+      href: profile.links.github,
       icon: (
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M4 4h16v16H4V4z" />
