@@ -34,7 +34,7 @@ export const profile: Profile = {
   givenName: 'Rithika',
   familyName: 'Ramasamy',
   title: 'Software Engineer I',
-  headline: 'Building reliable backend systems and product-focused full-stack applications.',
+  headline: 'Backend and full-stack engineer building reliable systems and applied AI products.',
   summary:
     'Full-stack software engineer building high-throughput backend systems and full-stack applications with MERN, TypeScript and applied AI. ' +
     'Currently engineering payment infrastructure and microservices at Neokred, with a focus on reliability, clean architecture and measurable product impact.',

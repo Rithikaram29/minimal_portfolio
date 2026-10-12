@@ -1,4 +1,5 @@
 import dp from "../../assets/dp.webp"
+import { profile } from "../../data/portfolio.ts"
 
 const scrollTo = (id: string) => {
   const el = document.getElementById(id)
@@ -54,7 +55,7 @@ export const HeroAbout = () => {
               Rithika Ramasamy
             </h1>
             <h2 className="mt-4 max-w-3xl text-xl font-semibold leading-8 text-(--text-secondary) sm:text-2xl">
-              Building reliable backend systems and product-focused full-stack applications.
+              {profile.headline}
             </h2>
           </div>
 
