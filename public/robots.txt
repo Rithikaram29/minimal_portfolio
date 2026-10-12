@@ -5,4 +5,4 @@ Allow: /
 #   /llms.txt        short index        /llms-full.txt   whole portfolio as text
 #   /agent           JSON API + manifest /mcp             read-only MCP server
 
-Sitemap: https://resume-kohl-mu-90.vercel.app/sitemap.xml
+Sitemap: https://rithikaramasamy.vercel.app/sitemap.xml

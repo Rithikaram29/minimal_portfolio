@@ -3,7 +3,7 @@
 // To update the site, edit this file only.
 
 export const site = {
-  url: 'https://resume-kohl-mu-90.vercel.app',
+  url: 'https://rithikaramasamy.vercel.app',
   name: 'Rithika Ramasamy',
   // Bump when content changes; surfaced to agents as the freshness signal.
   updated: '2026-10-09',
